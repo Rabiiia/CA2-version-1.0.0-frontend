@@ -96,18 +96,20 @@ function App(props) {
                   <Route path="/crud" element={<List />} />
                   <Route path="/crud/create" element={<Create />} />
                   <Route path="/crud/edit/:id" element={<Edit />} />
+                    {/* Add routes only admin can access */}
                 </>
               )
-              //  Add routes only admin can access
+             
             }
           </>
         )}
 
         {/* Does not matter if logged ind. You can always see these*/}
+        
         <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<Contact address={obj} />} />
 
-        <Route path="*" element={<h1>Page Not Found !!!!</h1>} />
+        <Route path="*" element={<h1>It does not land on landing page so press search and then home again</h1>} />
       </Routes>
     </>
   );
