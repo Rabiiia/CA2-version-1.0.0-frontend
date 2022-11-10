@@ -4,7 +4,11 @@ import Home from "./pages/Home.jsx";
 import Search from "./pages/Search.jsx";
 import Contact from "./pages/Contact.jsx";
 import LandingPage from "./pages/LandingPage.jsx";
-import CRUD from "./pages/CRUD";
+
+import List from "./components/CRUD/List";
+import Create from "./components/CRUD/Create";
+import Edit from "./components/CRUD/Edit";
+
 import Header from "./components/Header.jsx";
 import Jokes from "./components/Jokes.jsx";
 import { useEffect } from "react";
@@ -72,34 +76,37 @@ function App(props) {
     <>
       <Header user={user} setUser={setUser} />
       <Routes>
-       
-        {!getToken() ? (
+        {!getToken() ? ( //<< hvis ingen token så landingpage ellers
           <>
-          <Route path="/" element={<LandingPage user={user} />} />
-           {/* Add only Routes where you dont have to be logged ind to access */}
+            <Route path="/" element={<LandingPage user={user} />} />
+            {/* Add only Routes where you dont have to be logged ind to access */}
           </>
-        ) : 
-        
-        ( 
-        <>
-           {/* You have to be logged in as user or admin to see added routes down below  */}
-          <Route path="/" element={<Home user={user} />} />
-          <Route path="/jokes" element={<Jokes />} />
+        ) : (
+          //<< ellers ternary operator^
 
-          {/* You have to be logged in as  admin to see added routes down below  */}
-          {user.roles.includes("admin") && 
-            <Route path="/crud" element={<CRUD />} />
-            //  Add routes only admin can access 
-          
-          }
-        </>
+          <>
+            {/* You have to be logged in as user or admin to see added routes down below  */}
+            <Route path="/" element={<Home user={user} />} />
+            <Route path="/jokes" element={<Jokes />} />
+
+            {/* You have to be logged in as  admin to see added routes down below  */}
+            {
+              user.roles.includes("admin") && (
+                <>
+                  <Route path="/crud" element={<List />} />
+                  <Route path="/crud/create" element={<Create />} />
+                  <Route path="/crud/edit/:id" element={<Edit />} />
+                </>
+              )
+              //  Add routes only admin can access
+            }
+          </>
         )}
 
         {/* Does not matter if logged ind. You can always see these*/}
         <Route path="/search" element={<Search />} />
         <Route path="/contact" element={<Contact address={obj} />} />
-        
-        
+
         <Route path="*" element={<h1>Page Not Found !!!!</h1>} />
       </Routes>
     </>
