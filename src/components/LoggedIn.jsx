@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from "react";
 import { initialState } from "../App.jsx";
 import facade from "../utils/apiFacade.js";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export default function LoggedIn({user,setUser}) {
 
@@ -15,7 +17,7 @@ export default function LoggedIn({user,setUser}) {
         <div className="login-container">
             {user.isLoggedIn && <span>Hi, {user["username"]}! {user["roles"].includes("admin") && //replaced
             <span className="badge bg-dark">Admin</span>}</span>} 
-            <button onClick={logout}>Logout</button>
+            <Link to="/CA2/" onClick={logout}>Logout</Link>
         </div>
     )
 

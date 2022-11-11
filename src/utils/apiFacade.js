@@ -60,7 +60,7 @@ function apiFacade() {
 
     const fetchData = () => {
         const options = makeOptions("GET", true);
-        return fetch(URL + "api/info/user", options).then(handleHttpErrors);
+        return fetch(BASE_URL + "/api/info/user", options).then(handleHttpErrors);
     }
 
     function makeOptions(method, addToken, body) {

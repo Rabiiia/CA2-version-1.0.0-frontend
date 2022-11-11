@@ -51,7 +51,7 @@ const List = () => {
         </div>
         <div className="card-body">
           <div>
-            <Link to="crud/create" className="btn btn-success"> create new +</Link>
+            <Link to="/crud/create" className="btn btn-success"> create new +</Link>
           </div>
           <table className="table table-default">
             <thead className="bg-dark text-white">
@@ -64,11 +64,11 @@ const List = () => {
               </tr>
             </thead>
             <tbody>
-            {data?.length === 0 && (
-                data.map((data, index) => (
+            {data?.results.length > 0 && (
+                data.results.map((data, index) => (
                   <tr key={index}>
-                    <td>{data.results[0].gender}</td>
-                    <td>{data.name}</td>
+                    <td>{data.gender}</td>
+                    
                     <td>{data.name.title}</td>
                     <td>{data.name.first}</td>
                     <td>{data.name.last}</td>

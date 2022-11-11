@@ -13,9 +13,10 @@ const Create = () => {
 
   // const navigate=useNavigate();
 
-  // const handlesubmit=(e)=>{
-  //   e.preventDefault();
-  //   const empdata={name,email,phone,active};
+  const handlesubmit=(e)=>{
+    e.preventDefault();
+    const empdata={name,email,phone,active};
+  }
     
 
   //   fetch("http://localhost:8000/employee",{
@@ -32,7 +33,7 @@ const Create = () => {
   // }
 
   return (
- <div>
+ <div> "hej"
 
 <div className="row">
 <div className="offset-lg-3 col-lg-6">
@@ -104,4 +105,6 @@ const Create = () => {
 
 }
 
-export default Create
+
+
+export default Create;

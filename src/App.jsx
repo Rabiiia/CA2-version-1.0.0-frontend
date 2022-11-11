@@ -19,6 +19,7 @@ import {
   removeToken,
   setToken,
 } from "./utils/apiFacade";
+import { DROPLET_URL } from "./utils/settings.js";
 
 export const initialState = {
   username: null,
@@ -78,7 +79,7 @@ function App(props) {
       <Routes>
         {!getToken() ? ( //<< hvis ingen token så landingpage ellers
           <>
-            <Route path="/" element={<LandingPage user={user} />} />
+            <Route path={DROPLET_URL} element={<LandingPage user={user} />} />
             {/* Add only Routes where you dont have to be logged ind to access */}
           </>
         ) : (
@@ -86,7 +87,7 @@ function App(props) {
 
           <>
             {/* You have to be logged in as user or admin to see added routes down below  */}
-            <Route path="/" element={<Home user={user} />} />
+            <Route path={DROPLET_URL} element={<Home user={user} />} />
             <Route path="/jokes" element={<Jokes />} />
 
             {/* You have to be logged in as  admin to see added routes down below  */}
@@ -106,10 +107,10 @@ function App(props) {
 
         {/* Does not matter if logged ind. You can always see these*/}
         
-        <Route path="/search" element={<Search />} />
+        <Route path={DROPLET_URL + "search"} element={<Search />} />
         <Route path="/contact" element={<Contact address={obj} />} />
 
-        <Route path="*" element={<h1>It does not land on landing page so press search and then home again</h1>} />
+        <Route path={DROPLET_URL + "*"} element={<h1>Page not found!</h1>} />
       </Routes>
     </>
   );
