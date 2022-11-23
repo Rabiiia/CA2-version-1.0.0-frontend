@@ -78,7 +78,8 @@ function App(props) {
       <Routes>
         {!getToken() ? ( //<< hvis ingen token så landingpage ellers
           <>
-            <Route path={DROPLET_URL} element={<LandingPage user={user} />} />
+            <Route path={DROPLET_URL} element={<LandingPage user={user} />} /> 
+            
             {/* Add only Routes where you dont have to be logged ind to access */}
           </>
         ) : (

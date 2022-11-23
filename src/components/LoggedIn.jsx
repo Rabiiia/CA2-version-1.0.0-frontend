@@ -18,6 +18,7 @@ export default function LoggedIn({user,setUser}) {
             {user.isLoggedIn && <span>Hi, {user["username"]}! {user["roles"].includes("admin") && //replaced
             <span className="badge bg-dark">Admin</span>}</span>} 
             <Link to="/CA2/" onClick={logout}>Logout</Link>
+            
         </div>
     )
 

@@ -19,6 +19,10 @@ function Header({setErrorMsg, user, setUser}) {
             <NavLink className="active" to="/CA2/"><i className="fa fa-fw fa-home"></i> Home</NavLink>
             <NavLink to={DROPLET_URL + "search"}><i className="fa fa-fw fa-search"></i> Search</NavLink>
             
+            {/* But when you deploy then - > */}
+            {/* <NavLink className="active" to="{DROPLET_FOLDER}"><i className="fa fa-fw fa-home"></i> Home</NavLink>
+                <NavLink to={DROPLET_FOLDER + "/search"}><i className="fa fa-fw fa-search"></i> Search</NavLink> */}
+            
             
             {user.roles.includes("user") ? 
             <NavLink to="/jokes"><i></i> Jokes</NavLink> : null }

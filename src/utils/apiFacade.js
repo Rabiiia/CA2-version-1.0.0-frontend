@@ -48,6 +48,7 @@ function apiFacade() {
 
     //made some changes to async etc.
     const login = async (user, password) => {
+       
         const options = makeOptions("POST", false, {username: user, password: password});
         const response = await fetch(LOGIN_URL, options);
         try {
@@ -60,7 +61,7 @@ function apiFacade() {
             return false;
         }
         
-    }
+    };
 
     // added this function because we want read user(altså bruger) and its roles from token above in login function
     const decodeToken = (token) => {
@@ -69,7 +70,8 @@ function apiFacade() {
         const jwtData = token.split(".")[1];
         const decodedJwtJsonData = window.atob(jwtData);
         const decodedJwtData = JSON.parse(decodedJwtJsonData);
-        decodedJwtData["roles"] = decodedJwtData["roles"].includes(",") ? decodedJwtData["roles"].split(",").toArray() : [decodedJwtData["roles"]]
+        decodedJwtData["roles"] = decodedJwtData["roles"].includes(",") ? 
+        decodedJwtData["roles"].split(",") : [decodedJwtData["roles"]]
         return decodedJwtData;
     }
 
