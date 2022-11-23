@@ -28,11 +28,10 @@ export const initialState = {
 };
 
 export function updateUser(token, setUser) {
-  const info = decodeToken(token);
-  console.log(info);
+  const payload = decodeToken(token); //console.log(payload);
   setUser({
-    username: info["sub"],
-    roles: info["roles"],
+    username: payload["sub"],
+    roles: payload["roles"],
     isLoggedIn: true,
   });
 }
@@ -44,7 +43,7 @@ function App(props) {
   // bemærk denne function er async, fordi verifyToken function return a promise.
   // and async await unpacks that promise
   async function checkToken(token) {
-    console.log(token);
+    console.log("Checking token");
     if ((token = await verifyToken(token))) {
       setToken(token);
       updateUser(token, setUser);
